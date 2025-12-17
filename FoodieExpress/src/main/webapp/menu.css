@@ -1,0 +1,191 @@
+/* ========================================================= FoodieExpress — Perfect Fit Menu Page (Final Polished) ========================================================= */
+:root {
+	--bg: #0e1218;
+	--fg: #e8edf6;
+	--muted: #9aa7bf;
+	--card: #161b25;
+	--primary: #5ac8ff;
+	--gradient: linear-gradient(135deg, #36d1ff 0%, #7b61ff 100%);
+	--radius: 14px;
+	--shadow: 0 8px 24px rgba(0, 0, 0, .35);
+	--border: #1e2a3d;
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--fg);
+	font-family: "Inter", sans-serif;
+	overflow-x: hidden;
+} /* ===================== RESTAURANT BANNER ===================== */
+.restaurant-banner {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 16/6; /* ✅ keeps image ratio perfect on all devices */
+	overflow: hidden;
+	border-bottom: 1px solid var(--border);
+	background-size: cover;        /* Contain whole width */
+   /* background-position: center;   Perfect center focus */
+   background-repeat: no-repeat;  /* STOP TILING */
+}
+
+.restaurant-banner::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.75),
+		rgba(0, 0, 0, 0.25) 60%, transparent);
+}
+
+.banner-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* ✅ fills container properly */
+	object-position: center;
+	display: block;
+}
+
+.banner-overlay {
+	position: absolute;
+	bottom: 5%;
+	left: 5%;
+	z-index: 2;
+}
+
+.restaurant-name {
+	font-size: clamp(1.8rem, 4vw, 2.4rem);
+	font-weight: 800;
+	color: var(--fg);
+	margin: 0;
+}
+
+.restaurant-desc {
+	color: var(--muted);
+	margin: 4px 0;
+	font-size: 1rem;
+}
+
+.restaurant-meta {
+	color: var(--primary);
+	font-size: 0.95rem;
+} /* ===================== MENU SECTION ===================== */
+.menu-section {
+	padding: 50px 0 70px;
+}
+
+.container {
+	width: min(1100px, 90%);
+	margin: auto;
+}
+
+.menu-title {
+	font-size: 1.8rem;
+	font-weight: 700;
+	margin-bottom: 30px;
+	color: var(--fg);
+	border-left: 4px solid var(--primary);
+	padding-left: 12px;
+} /* GRID LAYOUT */
+.menu-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+	gap: 28px;
+} /* ===================== MENU CARD ===================== */
+.menu-item {
+	background: var(--card);
+	border-radius: var(--radius);
+	overflow: hidden;
+	box-shadow: var(--shadow);
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.menu-item:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 12px 30px rgba(54, 209, 255, .15);
+} /* ✅ FIXED PERFECT IMAGE RATIO FOR MENU ITEMS */
+.menu-item .image-wrapper {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 4/3; /* maintains perfect proportion */
+	overflow: hidden;
+}
+
+.menu-item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* fills box properly */
+	object-position: center;
+	display: block;
+	transition: transform .35s ease;
+}
+
+.menu-item:hover img {
+	transform: scale(1.06);
+}
+
+.item-details {
+	padding: 18px 20px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.item-details h3 {
+	margin: 0;
+	font-size: 1.1rem;
+	font-weight: 700;
+}
+
+.item-details p {
+	color: var(--muted);
+	font-size: 0.9rem;
+	margin-top: 6px;
+	line-height: 1.4;
+}
+
+.item-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 14px;
+}
+
+.price {
+	color: var(--primary);
+	font-weight: 700;
+	font-size: 1rem;
+}
+
+.add-btn {
+	background: var(--gradient);
+	color: #0c141f;
+	border: none;
+	padding: 9px 18px;
+	border-radius: var(--radius);
+	font-weight: 600;
+	cursor: pointer;
+	transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.add-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 16px rgba(90, 200, 255, .3);
+} /* ===================== FOOTER ===================== */
+.footer {
+	text-align: center;
+	padding: 24px 0;
+	color: var(--muted);
+	border-top: 1px solid var(--border);
+	font-size: 0.9rem;
+} /* ===================== RESPONSIVE ===================== */
+@media ( max-width : 768px) {
+	.restaurant-banner {
+		aspect-ratio: 16/9;
+	}
+	.menu-item .image-wrapper {
+		aspect-ratio: 1/1;
+	}
+}

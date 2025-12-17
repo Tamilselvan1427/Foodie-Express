@@ -1,0 +1,122 @@
+:root {
+  --bg: #0e1218;
+  --card: #151b24f0;
+  --border: #1f2a3a;
+  --text: #e8edf6;
+  --muted: #a4aec4;
+  --primary: #36d1ff;
+  --gradient: linear-gradient(135deg,#36d1ff,#7b61ff);
+  --radius: 14px;
+}
+
+body {
+  background: var(--bg);
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: var(--text);
+}
+
+.edit-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.edit-card {
+  width: min(420px, 90%);
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.45);
+  backdrop-filter: blur(10px);
+  animation: fadeIn .45s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform: translateY(20px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+.title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+label {
+  font-size: .9rem;
+  margin: 8px 0 4px;
+  display: block;
+}
+
+input, textarea {
+  width: 95%;
+  padding: 12px;
+  background: #10151f;
+  color: var(--text);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  font-size: .95rem;
+  margin-bottom: 12px;
+  outline: none;
+  transition: border-color .25s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 8px rgba(54,209,255,.4);
+}
+
+textarea {
+  min-height: 90px;
+  resize: none;  /* Disable resizing */
+  width: 95%;
+  padding: 11px;
+  background: #10151f;
+  color: var(--text);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  font-size: .95rem;
+  margin-bottom: 12px;
+  outline: none;
+  transition: border-color .25s ease;
+  
+}
+
+.btn-save {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  font-weight: 600;
+  color: #0e131d;
+  border-radius: var(--radius);
+  background: var(--gradient);
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.btn-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(54,209,255,.3);
+}
+
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: .85rem;
+  text-decoration: none;
+  transition: color .25s ease;
+}
+
+.back-link:hover {
+  color: var(--primary);
+}

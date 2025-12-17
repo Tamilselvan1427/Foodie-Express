@@ -1,0 +1,240 @@
+:root {
+  --bg: #0b111a;
+  --card: #141c27;
+  --border: #1f2c3e;
+  --text: #e4e9f0;
+  --muted: #9aa4b5;
+  --accent: #5ac8ff;
+  --danger: #ff4d4d;
+  --radius: 12px;
+  --gradient: linear-gradient(135deg, #5ac8ff, #7b61ff);
+}
+
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  background: rgba(20, 28, 39, 0.95);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo .brand {
+  font-size: 1.7rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links a {
+  color: var(--text);
+  margin: 0 14px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--accent);
+}
+
+.btn-nav {
+  background: var(--gradient);
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  color: white;
+}
+
+/* ===== MAIN LAYOUT ===== */
+.order-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 40px auto;
+  gap: 30px;
+}
+
+.glass {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  padding: 25px;
+}
+
+/* ===== FORM ===== */
+.order-form {
+  flex: 2;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-row {
+  display: flex;
+  gap: 18px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+input, textarea {
+  background: #1b2534;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px;
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+}
+
+/* ===== PAYMENT SECTION ===== */
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.payment-card {
+  background: #1b2534;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.payment-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.payment-card input {
+  margin-right: 12px;
+  accent-color: var(--accent);
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-content img {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #fff;
+  padding: 4px;
+}
+
+/* ===== BUTTON ===== */
+.btn.primary.confirm {
+  background: var(--gradient);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 14px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 20px;
+}
+
+.btn.primary.confirm:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 15px var(--accent);
+}
+
+/* ===== SUMMARY ===== */
+.order-summary {
+  flex: 1;
+  height: fit-content;
+  padding: 20px;
+  background: var(--card);
+  border-radius: var(--radius);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 0.95rem;
+}
+
+.summary-row.total {
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--card);
+  color: var(--muted);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+  padding: 15px 0;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .order-container {
+    flex-direction: column;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .order-summary {
+    width: 100%;
+  }
+}

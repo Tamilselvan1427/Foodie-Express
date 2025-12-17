@@ -1,0 +1,232 @@
+:root {
+  --bg: radial-gradient(circle at top, #141929, #080b12);
+  --glass: rgba(255, 255, 255, 0.07);
+  --fg: #eaf1ff;
+  --muted: #9ba5bc;
+  --primary: #5ac8ff;
+  --accent: #8b5cf6;
+  --border: rgba(255,255,255,0.14);
+  --gradient: linear-gradient(135deg, #36d1ff, #7b61ff, #ff4fe7);
+  --shadow: 0 28px 65px rgba(0,0,0,.65);
+  --radius: 18px;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  font-family: "Inter", sans-serif;
+  color: var(--fg);
+  overflow: hidden;
+}
+
+/* ANIMATION ENTRY */
+.fade-in {
+  animation: fadeIn .8s cubic-bezier(.22,1,.36,1);
+}
+
+.register-wrapper {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* CARD BOX */
+.register-box {
+  width: 100%;
+  max-width: 420px;
+  padding: 2.4rem;
+  background: var(--glass);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px) saturate(180%);
+  box-shadow: var(--shadow);
+  animation: zoomIn .6s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* LIGHT SHINE */
+.register-box::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -30%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(255,255,255,0.15) 50%,
+    transparent 60%
+  );
+  transform: rotate(15deg);
+  animation: shine 3.5s infinite;
+}
+
+/* TITLE */
+.title {
+  font-weight: 900;
+  font-size: 2rem;
+  text-align: center;
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: -1px;
+  animation: glowText 2.1s infinite alternate;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 1.8rem;
+  margin-top: 4px;
+  font-size: .95rem;
+}
+
+/* INPUT FIELD */
+.input-field {
+  position: relative;
+  margin-bottom: 1.4rem;
+}
+
+.input-field i {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  transition: .3s;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 46px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.15);
+  color: var(--fg);
+  font-size: .95rem;
+  transition: 0.3s;
+}
+
+.input-field input:hover {
+  border-color: var(--primary);
+}
+
+.input-field input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 12px rgba(90,200,255,.35);
+}
+
+.input-field:hover i,
+.input-field input:focus + i {
+  color: var(--primary);
+}
+
+/* EYE ICON */
+#togglePass {
+  right: 14px;
+  left: unset;
+  cursor: pointer;
+  transition: .3s;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#togglePass:hover {
+  transform: scale(1.15) translateY(-50%);
+  color: var(--primary);
+}
+
+/* BUTTON */
+.btn-register {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  background: var(--gradient);
+  color: #07131b;
+  font-weight: 800;
+  font-size: 1.05rem;
+  transition: .3s ease;
+  box-shadow: 0 0 18px rgba(90,200,255,.4);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.btn-register:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 0 38px rgba(90,200,255,.7);
+}
+
+/* LOGIN LINK */
+.login-text {
+  margin-top: 1.4rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.login-text a {
+  color: var(--primary);
+  font-weight: 800;
+  text-decoration: none;
+  transition: .3s;
+}
+
+.login-text a:hover {
+  text-shadow: 0 0 10px rgba(90,200,255,.8);
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  0% {opacity: 0; transform: translateY(26px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes zoomIn {
+  0% {transform: scale(.9);}
+  100% {transform: scale(1);}
+}
+
+@keyframes shine {
+  0% {transform: translateX(-200%) rotate(15deg);}
+  100% {transform: translateX(200%) rotate(15deg);}
+}
+
+@keyframes glowText {
+  0% {text-shadow: 0 0 0px;}
+  100% {text-shadow: 0 0 20px rgba(90,200,255,.7);}
+}
+
+@keyframes pulse {
+  0% {box-shadow: 0 0 14px rgba(90,200,255,.2);}
+  50% {box-shadow: 0 0 26px rgba(90,200,255,.6);}
+  100% {box-shadow: 0 0 14px rgba(90,200,255,.2);}
+}
+
+/* RESPONSIVE */
+@media(max-width: 480px){
+  .register-box {
+    padding: 1.6rem;
+  }
+  .title {
+    font-size: 1.7rem;
+  }
+  .btn-register {
+    font-size: .9rem;
+  }
+}

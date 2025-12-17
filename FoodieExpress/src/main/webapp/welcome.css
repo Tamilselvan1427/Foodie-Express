@@ -1,0 +1,204 @@
+/* =========================================================
+   FoodieExpress — Welcome Page (Neon Aurora + Glass Theme)
+   ========================================================= */
+
+/* -----------------------------
+   GLOBAL THEME VARIABLES
+   ----------------------------- */
+:root{
+  --background: #0d1117;
+  --foreground: #e8edf6;
+  --muted: #a9b4c7;
+  --border: #1e2a3d;
+
+  --card: #101724;
+
+  /* Neon Aurora: Blue → Purple → Pink */
+  --neon-aurora: linear-gradient(135deg, #36d1ff 0%, #7b61ff 50%, #ff4fe7 100%);
+
+  /* Glass Effect */
+  --glass-bg: rgba(14,18,24,.52);
+  --glass-border: rgba(255,255,255,.10);
+  --glass-blur: 14px;
+
+  --radius-pill: 999px;
+
+  --shadow-md: 0 12px 28px rgba(0,0,0,.32);
+  --shadow-lg: 0 18px 48px rgba(0,0,0,.55);
+
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --dur-fast: .15s;
+  --dur-med: .25s;
+}
+
+/* -----------------------------
+   BASE
+   ----------------------------- */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* -----------------------------
+   BACKGROUND (GRADIENT + COLLAGE)
+   ----------------------------- */
+.bg{
+  position:fixed; inset:0; z-index:-2;
+  overflow:hidden;
+}
+
+/* Neon Glow Gradient */
+.bg-gradient{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(80% 60% at 85% 15%, rgba(112,97,255,.22), transparent 60%),
+    radial-gradient(80% 60% at 15% 85%, rgba(54,209,255,.22), transparent 60%),
+    linear-gradient(180deg, #0b0f15 0%, #0e1218 100%);
+}
+
+/* Blurred Food Collage */
+.bg-img{
+  position:absolute;
+  filter: blur(14px) saturate(1.1);
+  opacity:.22;
+  transform: scale(1.18) rotate(2deg);
+  max-width: 60vw;
+  border-radius: 22px;
+}
+.bg-img.i1{ top:6%; left:-6%; }
+.bg-img.i2{ bottom:-6%; right:-8%; }
+.bg-img.i3{ top:16%; right:12%; max-width:48vw; opacity:.18; }
+
+/* -----------------------------
+   CARD
+   ----------------------------- */
+.wrapper{
+  width:100%;
+  display:flex; align-items:center; justify-content:center;
+  padding:20px;
+}
+.card{
+  width:100%; max-width:460px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding:36px 30px;
+  text-align:center;
+  box-shadow: var(--shadow-md);
+}
+
+/* Glassmorphism */
+.glass{
+  background: var(--glass-bg);
+  backdrop-filter: saturate(160%) blur(var(--glass-blur));
+  -webkit-backdrop-filter: saturate(160%) blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+/* Entrance Animation */
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(14px);}
+  to{opacity:1; transform:translateY(0);}
+}
+.fade-in{ animation: fadeUp .55s var(--ease) both; }
+
+/* -----------------------------
+   TEXT
+   ----------------------------- */
+.title{
+  font-size:1.95rem;
+  font-weight:800;
+  line-height:1.25;
+  margin-bottom:10px;
+}
+.brand{
+  background: var(--neon-aurora);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.subtitle{
+  color: var(--muted);
+  margin-bottom:26px;
+  font-size:1rem;
+  font-weight:500;
+}
+
+/* -----------------------------
+   BUTTONS (Capsule + Neon Aurora)
+   ----------------------------- */
+.action-buttons{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin-bottom:20px;
+}
+
+.btn,
+.btn:link,
+.btn:visited,
+.btn:hover,
+.btn:active {
+  display:block;
+  width:100%;
+  text-align:center;
+  cursor:pointer;
+  border:0;
+  padding:14px 0;
+  font-size:1.05rem;
+  font-weight:700;
+  border-radius: var(--radius-pill);
+  background: var(--neon-aurora);
+  color:#081521;
+  text-decoration: none !important;
+  box-shadow: 0 12px 28px rgba(54,209,255,.25),
+              0 12px 28px rgba(255,79,231,.18);
+  transition: transform var(--dur-fast) var(--ease),
+              box-shadow var(--dur-med) var(--ease),
+              opacity var(--dur-fast) var(--ease);
+}
+
+.btn:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Register Link */
+.helper{ margin-top:8px }
+.link{
+  color:#d5e8ff;
+  text-decoration:none;
+  font-weight:700;
+  font-size:.95rem;
+}
+.link:hover{
+  text-decoration:underline;
+}
+
+/* Focus Ring */
+a:focus-visible, .btn:focus-visible{
+  outline:none;
+  box-shadow: 0 0 0 3px rgba(90,200,255,.28);
+}
+
+/* -----------------------------
+   RESPONSIVE
+   ----------------------------- */
+@media (max-width:480px){
+  .card{ padding:28px 22px; }
+  .title{ font-size:1.65rem; }
+  .btn{ font-size:1rem; padding:13px 0; }
+  .bg-img{ display:none; }
+}
+
+/* Reduce Motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+}

@@ -121,6 +121,4 @@ REST API Integration
 👨‍💻 Author
 Tamil Selvan J
 B.Tech – Artificial Intelligence & Data Science
-Java Full Stack Developer
-
 🔗 GitHub: https://github.com/Tamilselvan1427
